@@ -63,6 +63,9 @@ function saveData() {
         class: document.getElementById('class').value,
         hp: document.getElementById('hp').textContent,
         ap: document.getElementById('ap').textContent,
+        maxHp: document.getElementById('max-hp').textContent,
+        maxAp: document.getElementById('max-ap').textContent,
+        maxCapacity: document.getElementById('max-capacity').textContent,
         strength: document.getElementById('strength').textContent,
         perception: document.getElementById('perception').textContent,
         endurance: document.getElementById('endurance').textContent,
@@ -87,13 +90,16 @@ function loadData() {
         document.getElementById('class').value = data.class || '';
         document.getElementById('hp').textContent = data.hp || '10';
         document.getElementById('ap').textContent = data.ap || '10';
-        document.getElementById('strength').textContent = data.strength || '5';
-        document.getElementById('perception').textContent = data.perception || '5';
-        document.getElementById('endurance').textContent = data.endurance || '5';
-        document.getElementById('charisma').textContent = data.charisma || '5';
-        document.getElementById('intelligence').textContent = data.intelligence || '5';
-        document.getElementById('agility').textContent = data.agility || '5';
-        document.getElementById('luck').textContent = data.luck || '5';
+        document.getElementById('max-hp').textContent = data.maxHp || '10';
+        document.getElementById('max-ap').textContent = data.maxAp || '10';
+        document.getElementById('max-capacity').textContent = data.maxCapacity || '20';
+        document.getElementById('strength').textContent = data.strength || '0';
+        document.getElementById('perception').textContent = data.perception || '0';
+        document.getElementById('endurance').textContent = data.endurance || '0';
+        document.getElementById('charisma').textContent = data.charisma || '0';
+        document.getElementById('intelligence').textContent = data.intelligence || '0';
+        document.getElementById('agility').textContent = data.agility || '0';
+        document.getElementById('luck').textContent = data.luck || '0';
         backpackItems = data.backpackItems || [];
         skills = data.skills || [];
         renderBackpack();
@@ -284,7 +290,7 @@ function renderSkills() {
 // Add event listeners for auto-save
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('name').addEventListener('input', saveData);
-    document.getElementById('race').addEventListener('change', saveData);
+    document.getElementById('race').addEventListener('input', saveData);
     document.getElementById('age').addEventListener('input', saveData);
     document.getElementById('class').addEventListener('input', saveData);
     
