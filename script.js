@@ -297,6 +297,44 @@ function renderSkills() {
     `).join('');
 }
 
+// Reset character sheet
+function resetCharacterSheet() {
+    const confirmation = confirm('Biztosan törölni szeretnéd az összes mentett adatot? Ez a művelet nem vonható vissza!');
+    
+    if (confirmation) {
+        // Clear localStorage
+        localStorage.removeItem('specialCharacter');
+        
+        // Reset all form inputs
+        document.getElementById('name').value = '';
+        document.getElementById('race').value = '';
+        document.getElementById('age').value = '';
+        document.getElementById('class').value = '';
+        
+        // Reset all stats to default values
+        document.getElementById('hp').textContent = '10';
+        document.getElementById('ap').textContent = '10';
+        document.getElementById('max-hp').textContent = '10';
+        document.getElementById('max-ap').textContent = '10';
+        document.getElementById('max-capacity').textContent = '20';
+        document.getElementById('strength').textContent = '0';
+        document.getElementById('perception').textContent = '0';
+        document.getElementById('endurance').textContent = '0';
+        document.getElementById('charisma').textContent = '0';
+        document.getElementById('intelligence').textContent = '0';
+        document.getElementById('agility').textContent = '0';
+        document.getElementById('luck').textContent = '0';
+        
+        // Clear arrays and re-render
+        backpackItems = [];
+        skills = [];
+        renderBackpack();
+        renderSkills();
+        
+        alert('A karakterlap sikeresen visszaállítva!');
+    }
+}
+
 // Add event listeners for auto-save
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('name').addEventListener('input', saveData);
