@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.P.E.C.I.A.L. karakterlap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="character-sheet">
+        <h1>S.P.E.C.I.A.L. karakterlap</h1>
+        
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="field-group">
+                    <label for="name">Név</label>
+                    <input type="text" id="name" placeholder="Név">
+                </div>
+                
+                <div class="field-group">
+                    <label for="name">Faj</label>
+                    <input type="text" id="name" placeholder="Faj">
+                </div>
+                
+                <div class="field-group">
+                    <label for="age">Kor</label>
+                    <input type="number" id="age" placeholder="Kor" min="0">
+                </div>
+                
+                <div class="field-group">
+                    <label for="class">Kaszt</label>
+                    <input type="text" id="class" placeholder="Kaszt">
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item resource-item-red">
+                    <div class="stat-label">HP</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('hp')">-</button>
+                        <div class="stat-value" id="hp">10</div>
+                        <button class="stat-btn" onclick="incrementStat('hp')">+</button>
+                    </div>
+                    <br>
+                    <div class="stat-item resource-item-red bordered">
+                    <div class="stat-label">Max HP</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('max-hp')">-</button>
+                        <div class="stat-value" id="max-hp">10</div>
+                        <button class="stat-btn" onclick="incrementStat('max-hp')">+</button>
+                    </div>
+                </div>
+                </div>
+
+                
+
+                <div class="stat-item resource-item-blue">
+                    <div class="stat-label">AP</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('ap')">-</button>
+                        <div class="stat-value" id="ap">10</div>
+                        <button class="stat-btn" onclick="incrementStat('ap')">+</button>
+                    </div>
+                    <br>
+                    <div class="stat-item resource-item-blue bordered">
+                    <div class="stat-label">Max AP</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('max-ap')">-</button>
+                        <div class="stat-value" id="max-ap">10</div>
+                        <button class="stat-btn" onclick="incrementStat('max-ap')">+</button>
+                    </div>
+                </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="stats-section" style="margin-top: 20px;">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Strength -<br>Erő</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('strength')">-</button>
+                        <div class="stat-value" id="strength">0</div>
+                        <button class="stat-btn" onclick="incrementStat('strength')">+</button>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Perception - Észlelés</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('perception')">-</button>
+                        <div class="stat-value" id="perception">0</div>
+                        <button class="stat-btn" onclick="incrementStat('perception')">+</button>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Endurance - Kitartás</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('endurance')">-</button>
+                        <div class="stat-value" id="endurance">0</div>
+                        <button class="stat-btn" onclick="incrementStat('endurance')">+</button>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Charisma - Karizma</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('charisma')">-</button>
+                        <div class="stat-value" id="charisma">0</div>
+                        <button class="stat-btn" onclick="incrementStat('charisma')">+</button>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Intelligence - Intelligencia</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('intelligence')">-</button>
+                        <div class="stat-value" id="intelligence">0</div>
+                        <button class="stat-btn" onclick="incrementStat('intelligence')">+</button>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-label">Agility - Mozgékonyság</div>
+                    <div class="stat-controls">
+                      <button class="stat-btn" onclick="decrementStat('agility')">-</button>
+                      <div class="stat-value" id="agility">0</div>
+                      <button class="stat-btn" onclick="incrementStat('agility')">+</button>
+                    </div>
+                  </div>
+                  
+                  <div class="stat-item">
+                    <div class="stat-label">Luck - Szerencse</div>
+                    <div class="stat-controls">
+                        <button class="stat-btn" onclick="decrementStat('luck')">-</button>
+                        <div class="stat-value" id="luck">0</div>
+                        <button class="stat-btn" onclick="incrementStat('luck')">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stats-section" style="margin-top: 20px;">
+          <h2 class="stats-title">Képességek</h2>
+          
+          <div class="backpack-add-form">
+              <input type="text" id="skill-name" placeholder="Képesség neve" class="backpack-input">
+              <textarea id="skill-description" placeholder="Leírás" class="backpack-textarea" rows="2"></textarea>
+              <input type="number" id="skill-ap-cost" placeholder="AP költség" min="0" value="1" class="backpack-input-small">
+              <button onclick="addSkill()" class="add-item-btn">Hozzáad</button>
+          </div>
+          
+          <div id="skills-list" class="backpack-list"></div>
+        </div>
+        <div class="stats-section" style="margin-top: 20px;">
+          <h2 class="stats-title" >Hátizsák</h2>
+          <div class="stat-label" id="backpack-count">Kapacitás: 0 (max: 20)</div>
+          <div class="stat-controls">
+              <button class="stat-btn" onclick="decrementStat('max-capacity')">-</button>
+              <div class="stat-value" id="max-capacity">20</div>
+              <button class="stat-btn" onclick="incrementStat('max-capacity')">+</button>
+          </div>
+          
+          <div class="backpack-add-form">
+              <input type="text" id="item-name" placeholder="Tárgy neve" class="backpack-input">
+              <textarea id="item-description" placeholder="Leírás" class="backpack-textarea" rows="2"></textarea>
+              <input type="number" id="item-quantity" placeholder="Mennyiség" min="1" value="1" class="backpack-input-small">
+              <button onclick="addItem()" class="add-item-btn">Hozzáad</button>
+          </div>
+          
+          <div id="backpack-list" class="backpack-list"><p class="empty-backpack">A hátizsák üres</p></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
