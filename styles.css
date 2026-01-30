@@ -130,7 +130,7 @@ input:focus, select:focus {
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
-    font-size: 1em;
+    font-size: 0.85em;
     text-transform: uppercase;
     letter-spacing: 1px;
 }

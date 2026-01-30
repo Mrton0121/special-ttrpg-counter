@@ -31,36 +31,33 @@ function incrementStat(statId) {
 function decrementStat(statId) {
     const element = document.getElementById(statId);
     let currentValue = parseInt(element.textContent);
+    
     if (statId == "max-hp"){
-      if (currentValue > 0) {
-        element.textContent = currentValue - 1;
-      }
+      element.textContent = currentValue - 1;
       if (parseInt(document.getElementById("hp").textContent) > currentValue - 1){
-        document.getElementById("hp").textContent = currentValue -1;
+        document.getElementById("hp").textContent = currentValue - 1;
       }
+      saveData();
+      return;
     }
 
     if (statId == "max-ap"){
-      if (currentValue > 0) {
-        element.textContent = currentValue - 1;
-      }
+      element.textContent = currentValue - 1;
       if (parseInt(document.getElementById("ap").textContent) > currentValue - 1){
-        document.getElementById("ap").textContent = currentValue -1;
+        document.getElementById("ap").textContent = currentValue - 1;
       }
+      saveData();
+      return;
     }
     
     if (statId == "max-capacity"){
-      if (currentValue > 0) {
-        element.textContent = currentValue - 1;
-      }
+      element.textContent = currentValue - 1;
       saveData();
       renderBackpack();
       return;
     }
     
-    if (currentValue > 0) {
-        element.textContent = currentValue - 1;
-    }
+    element.textContent = currentValue - 1;
     saveData();
 }
 
@@ -189,7 +186,7 @@ function decreaseQuantity(id) {
 function renderBackpack() {
     const backpackList = document.getElementById('backpack-list');
     let maxCapElement = document.getElementById("max-capacity")
-    let maxCap = parseInt(maxCapElement.innerText)
+    let maxCap = parseInt(maxCapElement.textContent)
 
     // Always update the capacity count
     document.getElementById("backpack-count").innerText = "Kapacitás: " + backpackItems.length + " (max: " + maxCap + ")"
