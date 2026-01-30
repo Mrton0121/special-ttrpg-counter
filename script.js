@@ -15,6 +15,12 @@ function incrementStat(statId) {
         return;
       }
     }
+    else if (statId == "max-capacity"){
+      element.textContent = currentValue + 1;
+      saveData();
+      renderBackpack();
+      return;
+    }
     else{
       element.textContent = currentValue + 1;
     }
@@ -41,6 +47,15 @@ function decrementStat(statId) {
       if (parseInt(document.getElementById("ap").textContent) > currentValue - 1){
         document.getElementById("ap").textContent = currentValue -1;
       }
+    }
+    
+    if (statId == "max-capacity"){
+      if (currentValue > 0) {
+        element.textContent = currentValue - 1;
+      }
+      saveData();
+      renderBackpack();
+      return;
     }
     
     if (currentValue > 0) {
@@ -176,12 +191,13 @@ function renderBackpack() {
     let maxCapElement = document.getElementById("max-capacity")
     let maxCap = parseInt(maxCapElement.innerText)
 
+    // Always update the capacity count
+    document.getElementById("backpack-count").innerText = "Kapacitás: " + backpackItems.length + " (max: " + maxCap + ")"
+
     if (backpackItems.length === 0) {
         backpackList.innerHTML = '<p class="empty-backpack">A hátizsák üres</p>';
         return;
     }
-
-    document.getElementById("backpack-count").innerText = "Kapacitás: " + backpackItems.length + " (max: " + maxCap + ")"
     
     backpackList.innerHTML = backpackItems.map(item => `
         <div class="backpack-item">
