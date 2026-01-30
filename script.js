@@ -241,14 +241,24 @@ function executeSkill(id) {
     if (!skill) return;
     
     const apElement = document.getElementById('ap');
+    const maxApElement = document.getElementById('max-ap');
     const currentAP = parseInt(apElement.textContent);
+    const maxAP = parseInt(maxApElement.textContent);
     
     if (currentAP < skill.apCost) {
         alert('Nincs elég AP a képesség használatához! (Szükséges: ' + skill.apCost + ', Meglévő: ' + currentAP + ')');
         return;
     }
     
-    apElement.textContent = currentAP - skill.apCost;
+    // Calculate new AP value
+    let newAP = currentAP - skill.apCost;
+    
+    // If it's an AP regen skill (negative cost), cap at max AP
+    if (skill.apCost < 0 && newAP > maxAP) {
+        newAP = maxAP;
+    }
+    
+    apElement.textContent = newAP;
     saveData();
     
     // Visual feedback
