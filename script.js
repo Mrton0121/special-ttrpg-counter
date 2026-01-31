@@ -357,4 +357,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load data on page load
     loadData();
+
+    // Dice widget toggle behavior
+    const diceToggle = document.getElementById('dice-toggle');
+    const diceWidget = document.getElementById('dice-widget');
+    const diceClose = document.getElementById('dice-close');
+
+    function openDice() {
+        if (!diceWidget) return;
+        diceWidget.classList.add('open');
+        diceWidget.setAttribute('aria-hidden', 'false');
+        if (diceToggle) diceToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDice() {
+        if (!diceWidget) return;
+        diceWidget.classList.remove('open');
+        diceWidget.setAttribute('aria-hidden', 'true');
+        if (diceToggle) diceToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (diceToggle && diceWidget) {
+        diceToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (diceWidget.classList.contains('open')) closeDice(); else openDice();
+        });
+
+        if (diceClose) diceClose.addEventListener('click', function (e) { e.stopPropagation(); closeDice(); });
+
+        // Close on ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeDice();
+        });
+
+        // Close when clicking outside the widget
+        document.addEventListener('click', function (e) {
+            if (!diceWidget.classList.contains('open')) return;
+            if (!diceWidget.contains(e.target) && e.target !== diceToggle) closeDice();
+        });
+
+        // Ensure widget and toggle do not overlap the fixed footer
+        function positionWidgetAboveFooter() {
+            const footer = document.querySelector('.footer');
+            if (!footer) return;
+
+            const footerStyle = getComputedStyle(footer);
+            const footerBottom = parseInt(footerStyle.bottom) || 0;
+            const footerHeight = footer.offsetHeight || 0;
+
+            const margin = 12; // spacing between footer and toggle
+            const toggleHeight = diceToggle.offsetHeight || 52;
+
+            // Position toggle above footer
+            const toggleBottom = footerHeight + footerBottom + margin;
+            diceToggle.style.bottom = toggleBottom + 'px';
+
+            // Position widget above the toggle
+            const widgetMargin = 12; // spacing between toggle and widget
+            const widgetBottom = footerHeight + footerBottom + toggleHeight + widgetMargin;
+            diceWidget.style.bottom = widgetBottom + 'px';
+        }
+
+        // Initial positioning and on resize
+        positionWidgetAboveFooter();
+        window.addEventListener('resize', positionWidgetAboveFooter);
+    }
 });
